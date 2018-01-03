@@ -7,202 +7,7 @@ const {
   createArc
 } = require('bs-geometric-forms');
 
-// Basket-Ball court dimensions for FIBA
-const courtConfig = {
-  topX: 0,
-  topY: 0,
-  height: 28, // meters
-  width: 15,
-  centerRing: {
-    centerX: 7.5,
-    centerY: 14,
-    radius: 1.8
-  },
-  topRing: {
-    centerX: 7.5,
-    centerY: 5.8,
-    radius: 1.8
-  },
-  bottomRing: {
-    centerX: 7.5,
-    centerY: 22.2,
-    radius: 1.8
-  },
-  topPaint: {
-    topX: 5.05,
-    topY: 0,
-    width: 4.9,
-    height: 5.8,
-    separationLines: [{
-      topX: 4.95,
-      topY: 1.75,
-      height: 0.08,
-      width: 0.1
-    }, {
-      topX: 4.95,
-      topY: 2.68,
-      height: 0.4,
-      width: 0.1
-    }, {
-      topX: 4.95,
-      topY: 3.93,
-      height: 0.08,
-      width: 0.1
-    }, {
-      topX: 4.95,
-      topY: 4.86,
-      height: 0.08,
-      width: 0.1
-    }, {
-      topX: 9.95,
-      topY: 1.75,
-      height: 0.08,
-      width: 0.1
-    }, {
-      topX: 9.95,
-      topY: 2.68,
-      height: 0.4,
-      width: 0.1
-    }, {
-      topX: 9.95,
-      topY: 3.93,
-      height: 0.08,
-      width: 0.1
-    }, {
-      topX: 9.95,
-      topY: 4.86,
-      height: 0.08,
-      width: 0.1
-    }]
-  },
-  bottomPaint: {
-    topX: 5.05,
-    topY: 22.2,
-    width: 4.9,
-    height: 5.8,
-    separationLines: [{
-      topX: 4.95,
-      topY: 26.25,
-      height: 0.08,
-      width: 0.1
-    }, {
-      topX: 4.95,
-      topY: 25.32,
-      height: 0.4,
-      width: 0.1
-    }, {
-      topX: 4.95,
-      topY: 24.07,
-      height: 0.08,
-      width: 0.1
-    }, {
-      topX: 4.95,
-      topY: 23.14,
-      height: 0.08,
-      width: 0.1
-    }, {
-      topX: 9.95,
-      topY: 26.25,
-      height: 0.08,
-      width: 0.1
-    }, {
-      topX: 9.95,
-      topY: 25.32,
-      height: 0.4,
-      width: 0.1
-    }, {
-      topX: 9.95,
-      topY: 24.07,
-      height: 0.08,
-      width: 0.1
-    }, {
-      topX: 9.95,
-      topY: 23.14,
-      height: 0.08,
-      width: 0.1
-    }]
-  },
-  topBasket: {
-    bigLine: {
-      x1: 6.6,
-      y1: 1.2,
-      x2: 8.4,
-      y2: 1.2
-    },
-    smallLine: {
-      x1: 7.5,
-      y1: 1.2,
-      x2: 7.5,
-      y2: 1.32
-    },
-    ring: {
-      centerX: 7.5,
-      centerY: 1.545,
-      radius: 0.225
-    }
-  },
-  bottomBasket: {
-    bigLine: {
-      x1: 6.6,
-      y1: 26.8,
-      x2: 8.4,
-      y2: 26.8
-    },
-    smallLine: {
-      x1: 7.5,
-      y1: 26.8,
-      x2: 7.5,
-      y2: 26.68
-    },
-    ring: {
-      centerX: 7.5,
-      centerY: 26.455,
-      radius: 0.225
-    }
-  },
-  top3Points: {
-    leftLine: {
-      x1: 0.9,
-      y1: 0,
-      x2: 0.9,
-      y2: 2.99
-    },
-    rightLine: {
-      x1: 14.1,
-      y1: 0,
-      x2: 14.1,
-      y2: 2.99
-    },
-    arc: {
-      innerRadius: 6.75,
-      outerRadius: 6.75,
-      startAngle: 1.785,
-      endAngle: 4.5
-    }
-  },
-  bottom3Points: {
-    leftLine: {
-      x1: 0.9,
-      y1: 28,
-      x2: 0.9,
-      y2: 25.01
-    },
-    rightLine: {
-      x1: 14.1,
-      y1: 28,
-      x2: 14.1,
-      y2: 25.01
-    },
-    arc: {
-      innerRadius: 6.75,
-      outerRadius: 6.75,
-      startAngle: 4.5,
-      endAngle: 1.785
-    }
-  }
-};
-
-function courtConfigZoomed(zoomSize, courtConfiguration = courtConfig) {
+function courtConfigZoomed(zoomSize) {
   function zoom(courtZoom) {
     // props equal to 0 don't need a function to evolve
     const separationLinesTransformations = {
@@ -318,7 +123,202 @@ function courtConfigZoomed(zoomSize, courtConfiguration = courtConfig) {
     };
   }
 
-  return R.evolve(zoom(zoomSize), courtConfiguration);
+  // Basket-Ball court dimensions for FIBA
+  const courtConfig = {
+    topX: 0,
+    topY: 0,
+    height: 28, // meters
+    width: 15,
+    centerRing: {
+      centerX: 7.5,
+      centerY: 14,
+      radius: 1.8
+    },
+    topRing: {
+      centerX: 7.5,
+      centerY: 5.8,
+      radius: 1.8
+    },
+    bottomRing: {
+      centerX: 7.5,
+      centerY: 22.2,
+      radius: 1.8
+    },
+    topPaint: {
+      topX: 5.05,
+      topY: 0,
+      width: 4.9,
+      height: 5.8,
+      separationLines: [{
+        topX: 4.95,
+        topY: 1.75,
+        height: 0.08,
+        width: 0.1
+      }, {
+        topX: 4.95,
+        topY: 2.68,
+        height: 0.4,
+        width: 0.1
+      }, {
+        topX: 4.95,
+        topY: 3.93,
+        height: 0.08,
+        width: 0.1
+      }, {
+        topX: 4.95,
+        topY: 4.86,
+        height: 0.08,
+        width: 0.1
+      }, {
+        topX: 9.95,
+        topY: 1.75,
+        height: 0.08,
+        width: 0.1
+      }, {
+        topX: 9.95,
+        topY: 2.68,
+        height: 0.4,
+        width: 0.1
+      }, {
+        topX: 9.95,
+        topY: 3.93,
+        height: 0.08,
+        width: 0.1
+      }, {
+        topX: 9.95,
+        topY: 4.86,
+        height: 0.08,
+        width: 0.1
+      }]
+    },
+    bottomPaint: {
+      topX: 5.05,
+      topY: 22.2,
+      width: 4.9,
+      height: 5.8,
+      separationLines: [{
+        topX: 4.95,
+        topY: 26.25,
+        height: 0.08,
+        width: 0.1
+      }, {
+        topX: 4.95,
+        topY: 25.32,
+        height: 0.4,
+        width: 0.1
+      }, {
+        topX: 4.95,
+        topY: 24.07,
+        height: 0.08,
+        width: 0.1
+      }, {
+        topX: 4.95,
+        topY: 23.14,
+        height: 0.08,
+        width: 0.1
+      }, {
+        topX: 9.95,
+        topY: 26.25,
+        height: 0.08,
+        width: 0.1
+      }, {
+        topX: 9.95,
+        topY: 25.32,
+        height: 0.4,
+        width: 0.1
+      }, {
+        topX: 9.95,
+        topY: 24.07,
+        height: 0.08,
+        width: 0.1
+      }, {
+        topX: 9.95,
+        topY: 23.14,
+        height: 0.08,
+        width: 0.1
+      }]
+    },
+    topBasket: {
+      bigLine: {
+        x1: 6.6,
+        y1: 1.2,
+        x2: 8.4,
+        y2: 1.2
+      },
+      smallLine: {
+        x1: 7.5,
+        y1: 1.2,
+        x2: 7.5,
+        y2: 1.32
+      },
+      ring: {
+        centerX: 7.5,
+        centerY: 1.545,
+        radius: 0.225
+      }
+    },
+    bottomBasket: {
+      bigLine: {
+        x1: 6.6,
+        y1: 26.8,
+        x2: 8.4,
+        y2: 26.8
+      },
+      smallLine: {
+        x1: 7.5,
+        y1: 26.8,
+        x2: 7.5,
+        y2: 26.68
+      },
+      ring: {
+        centerX: 7.5,
+        centerY: 26.455,
+        radius: 0.225
+      }
+    },
+    top3Points: {
+      leftLine: {
+        x1: 0.9,
+        y1: 0,
+        x2: 0.9,
+        y2: 2.99
+      },
+      rightLine: {
+        x1: 14.1,
+        y1: 0,
+        x2: 14.1,
+        y2: 2.99
+      },
+      arc: {
+        innerRadius: 6.75,
+        outerRadius: 6.75,
+        startAngle: 1.785,
+        endAngle: 4.5
+      }
+    },
+    bottom3Points: {
+      leftLine: {
+        x1: 0.9,
+        y1: 28,
+        x2: 0.9,
+        y2: 25.01
+      },
+      rightLine: {
+        x1: 14.1,
+        y1: 28,
+        x2: 14.1,
+        y2: 25.01
+      },
+      arc: {
+        innerRadius: 6.75,
+        outerRadius: 6.75,
+        startAngle: 4.5,
+        endAngle: 1.785
+      }
+    }
+  };
+
+  return R.evolve(zoom(zoomSize), courtConfig);
 }
 
 function generateCourt(domElementToRenderSVG, courtConfiguration, wishedZoom) {
@@ -520,4 +520,4 @@ function generateCourt(domElementToRenderSVG, courtConfiguration, wishedZoom) {
 }
 
 exports.courtConfigZoomed = courtConfigZoomed;
-exports.generateCourt = generateCourt;
+exports.generateCourt = R.curry(generateCourt);
